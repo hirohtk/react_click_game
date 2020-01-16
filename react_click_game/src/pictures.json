@@ -1,29 +1,38 @@
 [
     {
+        "id": 1,
         "route": "./images/city.png"
     },
     {
+        "id": 2,
         "route": "./images/color.png"
     },
     {
+        "id": 3,
         "route": "./images/expansion.png"
     },
     {
+        "id": 4,
         "route": "./images/majestic.png"
     },
     {
+        "id": 5,
         "route": "./images/network.png"
     },
     {
+        "id": 6,
         "route": "./images/pastelpolygon.png"
     },
     {
+        "id": 7,
         "route": "./images/screen.png"
     },
     {
+        "id": 8,
         "route": "./images/vector.png"
     },
     {
+        "id": 9,
         "route": "./images/weave.png"
     }
 ]
