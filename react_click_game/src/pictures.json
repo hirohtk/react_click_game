@@ -1,0 +1,29 @@
+[
+    {
+        "route": "./images/city.png"
+    },
+    {
+        "route": "./images/color.png"
+    },
+    {
+        "route": "./images/expansion.png"
+    },
+    {
+        "route": "./images/majestic.png"
+    },
+    {
+        "route": "./images/network.png"
+    },
+    {
+        "route": "./images/pastelpolygon.png"
+    },
+    {
+        "route": "./images/screen.png"
+    },
+    {
+        "route": "./images/vector.png"
+    },
+    {
+        "route": "./images/weave.png"
+    }
+]
