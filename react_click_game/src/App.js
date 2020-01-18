@@ -3,6 +3,7 @@ import './App.css';
 
 import Wrapper from './components/wrapper';
 import Cards from "./components/cards"
+import ConditionModal from "./components/modal";
 
 import pictures from "./pictures.json"
 
@@ -14,7 +15,9 @@ class App extends React.Component {
     hoverClass: [],
     pointsScored: 0,
     picturesClicked: [],
-    highScore: 0
+    highScore: 0,
+    message: "",
+    messageColor: ""
   }
 
   hover = id => {
@@ -41,24 +44,39 @@ class App extends React.Component {
   }
 
   makeClick = (id) => {
-    console.log(this.state.picturesClicked);
+    // Lose condition
+    this.setState({ message: "" });
+    this.setState({ messageColor: "" });
     if (this.state.picturesClicked.includes(id)) {
-      console.log("game is over!");
       this.setState({ pointsScored: 0 });
       this.setState({ picturesClicked: [] });
+      this.setState({ message: "You Lose!  Try again" });
+      this.setState({ messageColor: "redText" });
       this.randomize();
     }
     else {
       this.state.picturesClicked.push(id);
-      if (this.state.pointsScored === this.state.highScore) {
-        this.randomize();
-        this.setState({ pointsScored: this.state.pointsScored + 1 });
-        this.setState({ highScore: this.state.pointsScored + 1 });
+
+      // Win Condition
+      if (this.state.pointsScored === this.state.pictures.length) {
+        this.setState({ message: "You Win!  Game is reset." });
+        this.setState({ messageColor: "greenText" });
       }
+      // Continue Condition
       else {
-        this.randomize();
-        this.setState({ pointsScored: this.state.pointsScored + 1 });
+        // Update High Score Condition
+        if (this.state.pointsScored === this.state.highScore) {
+          this.randomize();
+          this.setState({ pointsScored: this.state.pointsScored + 1 });
+          this.setState({ highScore: this.state.pointsScored + 1 });
+        }
+        else {
+          // Do not Update High Score Condition
+          this.randomize();
+          this.setState({ pointsScored: this.state.pointsScored + 1 });
+        }
       }
+
     }
   }
 
@@ -96,11 +114,11 @@ class App extends React.Component {
     return (
       <Wrapper>
         <div className="jumbotron jumbotron-fluid">
-          <h1 className="display-4">Clicky Game! </h1>
-          <h1 className="display-5">Powered by Create-React-App</h1>
+          <h1 className=""><strong>Clicky Game!</strong> </h1>
+          <h3 className="">Powered by Create-React-App</h3>
           <p className="lead">Points Scored: {this.state.pointsScored}</p>
           <p>High Score: {this.state.highScore}</p>
-          
+          <p id={this.state.messageColor}>{this.state.message}</p>
           {/* {
             // this is why .map() works- the way an array is rendered is quite simple, it's just all of the array values
             [1, 2, 3, 4, 5]
@@ -111,7 +129,6 @@ class App extends React.Component {
             {
               // for each in pictures (WHICH IS AN ARRAY), give me an array of <Cards with these props inside> </Cards>
               this.state.pictures.map((pics, index) =>
-
                 <Cards
                   route={pics.route}
                   id={pics.id}
@@ -128,11 +145,13 @@ class App extends React.Component {
                   test2={this.test2}
                 >
                 </Cards>
-
               )
             }
           </div>
         </div>
+
+
+
       </Wrapper>
     );
   }
