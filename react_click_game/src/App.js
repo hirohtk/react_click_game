@@ -17,6 +17,7 @@ class App extends React.Component {
   }
 
   hover = id => {
+    //id is working as intended, but it is quite literally putting the hover class onto the id
     console.log(id);
     const newArray = [];
     for (let i = 0; i < this.state.pictures.length; i++) {
@@ -31,7 +32,6 @@ class App extends React.Component {
     // of the card being hovered will be "hover", which will trigger the css for transforming.
     this.setState({ hoverClass: newArray })
     console.log(newArray)
-
   }
 
   unhover = () => {
@@ -49,18 +49,15 @@ class App extends React.Component {
   }
 
   randomize = () => {
-    let newArray = [];
+    const newArray = [];
     let cap = this.state.pictures.length;
     // cap var is here to increase the length that the for loop runs, because.. my if statement "skips" an iteration if satisfied
     // starting cap at 9, and increasing by one if we ever "skip" 
     for (let i = 0; i <= cap; i++) {
       // RANDOM NUMBER is 0 through 8
       var random = Math.floor(Math.random() * 9);;
-      console.log("new loop");
-
        // If this new array has nine members, end this function by setting state
       if (newArray.length === 9) {
-        console.log(newArray)
         this.setState({pictures: newArray});
       }
 
@@ -71,7 +68,6 @@ class App extends React.Component {
           continue;
         }
         else {
-          console.log(`pushing picture ${random} into array`);
           newArray.push(this.state.pictures[random]);
         }
       }
@@ -94,7 +90,7 @@ class App extends React.Component {
           <div className="cardsContainer">
             {
               // for each in pictures (WHICH IS AN ARRAY), give me an array of <Cards with these props inside> </Cards>
-              this.state.pictures.map(pics =>
+              this.state.pictures.map((pics, index) =>
 
                 <Cards
                   route={pics.route}
@@ -102,8 +98,9 @@ class App extends React.Component {
 
                   hover={this.hover}
                   unhover={this.unhover}
-                  // using the hoverClass array, re-use the id already coming from the json file 
-                  hoverClass={this.state.hoverClass[pics.id - 1]}
+                  // using the hoverClass array, use index number (index is the current index number in a map result array.
+                  // This way, the hoverClasses are applied as they should be
+                  hoverClass={this.state.hoverClass[index]}
 
                   key={pics.id}
 
