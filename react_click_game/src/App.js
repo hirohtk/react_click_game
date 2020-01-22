@@ -3,7 +3,8 @@ import './App.css';
 
 import Wrapper from './components/wrapper';
 import Cards from "./components/cards"
-import ConditionModal from "./components/modal";
+import GameModal from "./components/modal";
+import Jumbotron from "./components/jumbotron"
 
 import pictures from "./pictures.json"
 
@@ -17,11 +18,11 @@ class App extends React.Component {
     picturesClicked: [],
     highScore: 0,
     message: "",
-    messageColor: ""
+    messageColor: "",
+    open: false
   }
 
   hover = id => {
-    //id is working as intended, but it is quite literally putting the hover class onto the id
 
     const newArray = [];
     for (let i = 0; i < this.state.pictures.length; i++) {
@@ -44,14 +45,19 @@ class App extends React.Component {
   }
 
   makeClick = (id) => {
-    // Lose condition
+    
     this.setState({ message: "" });
     this.setState({ messageColor: "" });
+    
+    
+    // Lose condition
     if (this.state.picturesClicked.includes(id)) {
       this.setState({ pointsScored: 0 });
       this.setState({ picturesClicked: [] });
       this.setState({ message: "You Lose!  Try again" });
       this.setState({ messageColor: "redText" });
+      this.setState({ open: true});
+      console.log(`state is ${this.state.open}`);
       this.randomize();
     }
     else {
@@ -110,20 +116,24 @@ class App extends React.Component {
     }
   }
 
+  hideModal = () => {
+    this.setState({open: false});
+  }
+
   render() {
     return (
       <Wrapper>
-        <div className="jumbotron jumbotron-fluid">
-          <h1 className=""><strong>Clicky Game!</strong> </h1>
-          <h3 className="">Powered by Create-React-App</h3>
-          <p className="lead">Points Scored: {this.state.pointsScored}</p>
-          <p>High Score: {this.state.highScore}</p>
-          <p id={this.state.messageColor}>{this.state.message}</p>
-          {/* {
-            // this is why .map() works- the way an array is rendered is quite simple, it's just all of the array values
-            [1, 2, 3, 4, 5]
-          } */}
-        </div>
+        <Jumbotron
+        pointsScored={this.state.pointsScored}
+        highScore={this.state.highScore}>
+        </Jumbotron>
+        <GameModal
+        open={this.state.open}
+        hideModal={this.hideModal}
+        winOrLose={this.state.message}
+        color={this.state.messageColor}
+        >
+        </GameModal>
         <div className="outerCardsContainer">
           <div className="cardsContainer">
             {
@@ -149,8 +159,6 @@ class App extends React.Component {
             }
           </div>
         </div>
-
-
 
       </Wrapper>
     );
