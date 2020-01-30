@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/react_click_game/static/css/main.4824bc39.chunk.css",
+    "main.js": "/react_click_game/static/js/main.3a03ed90.chunk.js",
+    "main.js.map": "/react_click_game/static/js/main.3a03ed90.chunk.js.map",
+    "runtime-main.js": "/react_click_game/static/js/runtime-main.0c00a474.js",
+    "runtime-main.js.map": "/react_click_game/static/js/runtime-main.0c00a474.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/react_click_game/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.46ec4f21.chunk.js": "/react_click_game/static/js/2.46ec4f21.chunk.js",
+    "static/js/2.46ec4f21.chunk.js.map": "/react_click_game/static/js/2.46ec4f21.chunk.js.map",
+    "index.html": "/react_click_game/index.html",
+    "precache-manifest.b12643c1ece4015b1fdf73c1aee70144.js": "/react_click_game/precache-manifest.b12643c1ece4015b1fdf73c1aee70144.js",
+    "service-worker.js": "/react_click_game/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/react_click_game/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.4824bc39.chunk.css.map": "/react_click_game/static/css/main.4824bc39.chunk.css.map",
+    "static/js/2.46ec4f21.chunk.js.LICENSE": "/react_click_game/static/js/2.46ec4f21.chunk.js.LICENSE",
+    "static/media/jumbotron.css": "/react_click_game/static/media/horizontalnetwork.88ae609b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c00a474.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.46ec4f21.chunk.js",
+    "static/css/main.4824bc39.chunk.css",
+    "static/js/main.3a03ed90.chunk.js"
+  ]
+}
